@@ -52,7 +52,7 @@ resource "aws_internet_gateway" "gw-to-internet01" {
 resource "aws_route_table" "route-to-gw01" {
  vpc_id = "${aws_vpc.vpc01.id}"
  route {
- cidr_block = "0.0.0.0/0"
+   cidr_block = "0.0.0.0/0"
    gateway_id = "${aws_internet_gateway.gw-to-internet01.id}"
  }
 }
@@ -74,19 +74,20 @@ resource "aws_security_group" "sg_infra" {
    from_port = 22
    to_port = 22
    protocol = "tcp"
-   cidr_blocks = [
-      "XX.XX.XX.XX/29"
-   ]
+   cidr_blocks = ["XX.XX.XX.XX/29"]
  }
-
  ingress {
    from_port = -1
    to_port = -1
    protocol = "icmp"
-   cidr_blocks = [
-     "XX.XX.XX.XX/29"
-   ]
+   cidr_blocks = ["XX.XX.XX.XX/29"]
  }
+ egress {
+      from_port = 0
+      to_port = 0
+      protocol = "-1"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
 }
 # Instance ====================================================
 resource "aws_instance" "web" {
