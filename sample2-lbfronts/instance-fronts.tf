@@ -12,7 +12,7 @@ resource "aws_instance" "instance-front01-a" {
  associate_public_ip_address = true
 
  tags {
-   Name = "web01-${var.platform}-${var.customer}"
+   Name = "${var.customer}-${var.platform}-front01"
    Customer = "${var.customer}"
    Platform = "${var.platform}"
  }
@@ -37,7 +37,7 @@ resource "aws_instance" "instance-front02-b" {
  associate_public_ip_address = true
 
  tags {
-   Name = "web02-${var.platform}-${var.customer}"
+   Name = "${var.customer}-${var.platform}-front02"
    Customer = "${var.customer}"
    Platform = "${var.platform}"
  }

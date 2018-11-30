@@ -1,14 +1,15 @@
 
 # Global variables ==============================================================
-
 variable "customer" { default = "kerkeni" }
 variable "project" { default = "lbfronts" }
 variable "platform" { default = "prod" }
-variable "region" { default = "eu-west-1" }
+variable "region" { default = "eu-west-3" } # Paris
 variable "cidr_block" { default = "1" }
-variable "ami_servers" {default = "ami-34f2604d"} # Ubuntu Server 14.04 LTS (HVM), SSD Volume Type
+variable "ami_servers" {default = "ami-075b44448d2276521"} # Ubuntu Server 16.04 LTS (HVM), SSD Volume Type (Paris)
 variable "ectype_fronts" {default = "t2.micro"}
-variable "whiteListIPs" {default = "X.X.X.X/Y"}
+# -- Veriables defined in private section
+#variable "whiteListIPs" {default = "A.B.C.D/E"}
+
 
 # Main regions
 provider "aws" {
